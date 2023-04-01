@@ -13,9 +13,13 @@ def addTasks(*args):
     sqlTxt = 'INSERT INTO Tasks values('
     for item in args:
         sqlTxt += str(item) + ", "
+
+    sqlTxt = sqlTxt.rstrip(",")
     sqlTxt += ")"
 
     cur.execute(sqlTxt)
+
+    conn.commit()
 
     records = cur.fetchall()
 
@@ -36,9 +40,13 @@ def addUser(*args):
     sqlTxt = 'INSERT INTO Users values('
     for item in args:
         sqlTxt += str(item) + ", "
+
+    sqlTxt = sqlTxt.rstrip(",")
     sqlTxt += ")"
 
     cur.execute(sqlTxt)
+
+    conn.commit()
 
     records = cur.fetchall()
 
