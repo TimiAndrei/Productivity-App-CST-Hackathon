@@ -15,4 +15,6 @@ Webapp/Product/migrations/__pycache__/__init__.cpython-310.pyc
 tasks.py
 user.py
 user_list.py
+retrieve_data.py
+create_tables.sql
 ProjectVenv
