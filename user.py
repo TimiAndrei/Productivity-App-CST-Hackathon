@@ -34,8 +34,18 @@ class user:
     def printvars(self):
         print(self.first_name, self.last_name, self.password, self.clan_tag, self.username)
     
+    
     def updatePoints(self, value):
         self.points += value
+    
+    # the more recent tasks are inserted at the beginning 
+    def addTask(self, task):
+        self.task_list.insert(0, task)
+
+    def removeTask(self, task):
+        # don't forget to add points when finnishing a task
+        # self.updatePoints(task.pointGain)
+        self.task_list.remove(task)
 
 
 
