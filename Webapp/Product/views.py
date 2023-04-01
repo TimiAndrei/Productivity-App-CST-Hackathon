@@ -3,12 +3,6 @@ from django.http import HttpResponse
 from .forms import CreateUserForm, addTaskForm
 import cx_Oracle
 import pandas as pd
-<<<<<<< HEAD
-=======
-from user import user
-from tasks import task
-from user_list import userList
->>>>>>> origin/Ioan_branch
 
 
 cx_Oracle.init_oracle_client(lib_dir=r"D:/Oracle_libraries/instantclient_21_8")
@@ -40,7 +34,6 @@ def register(request):
     context = {'form':form}
     return render(request,'register.html',context=context) 
 
-<<<<<<< HEAD
 def addTasks(*args):
     conn=connection()
     cursor = conn.cursor()
@@ -56,8 +49,6 @@ def addTasks(*args):
     df = pd.DataFrame.from_records(records, columns = [x[0] for x in cur.description])
     return df
 
-=======
->>>>>>> origin/Ioan_branch
 def addtask(request):
     if request.method == 'GET':
         return render(request, 'addtask.html', {'task':{}})
@@ -68,22 +59,10 @@ def addtask(request):
             description = form.cleaned_data['description']
             difficulty = form.cleaned_data['difficulty']
             deadline = form.cleaned_data['deadline']
-<<<<<<< HEAD
             duration = form.cleaned_data['duration']
             task_type = form.cleaned_data['task_type']
             username = form.cleaned_data['username']
             addTasks(title, description, difficulty, deadline, duration, task_type, username)
-=======
-            visibility = form.cleaned_data['visibility']
-            task_type = form.cleaned_data['task_type']
-            username = form.cleaned_data['username']
-            new_task = task(title, description, visibility, difficulty, deadline, task_type)
-
-            for person in userList.users:
-                if person.username == username:
-                    person.addTask(new_task)
-            # addTasks(title, description, difficulty, deadline, duration, task_type, username)
->>>>>>> origin/Ioan_branch
     
     return redirect('listtasks')
 
@@ -99,7 +78,6 @@ def listtasks(request):
     conn.close()
     return render(request, 'listtasks.html', {'tasks': tasks})
 
-<<<<<<< HEAD
 def addUser(*args):
     sqlTxt = 'INSERT INTO Users values('
     for item in args:
@@ -124,6 +102,4 @@ def getUsers():
     return df
 
 
-=======
->>>>>>> origin/Ioan_branch
 
