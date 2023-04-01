@@ -70,12 +70,47 @@
 
     <div class="text-center">
 
-        <h3> A new day, a new task ...</h3>
+        <h3> Alegeți-vă taskurile pentru ziua de azi</h3>
 
-        <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'listtasks' %}">Get to my tasks</a>
-        <br><br>
-        <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'addtask' %}">Add a task</a>
     </div>
+
+    <table class="table">
+
+        <thead>
+
+            <tr>
+                <th scope="col">Task_id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Difficulty</th>
+                <th scope="col">Deadline</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Task_type</th>
+                <th scope="col">Username</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for task in tasks %}
+
+            <tr>
+                <td>{{ task.task_id }}</td>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.difficulty }}</td>
+                <td>{{ task.deadline }}</td>
+                <td>{{ task.duration }}</td>
+                <td>{{ task.task_type }}</td>
+                <td>{{ task.username }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
     </table>
 
 
