@@ -9,5 +9,6 @@ urlpatterns=[
     path('dashboard/',views.dashboard, name='dashboard'),
     path('register/',views.register, name='register'),
     path('listtasks/',views.listtasks, name='listtasks'),
+    path('addtask/',views.addtask, name='addtask'),
 
 ]

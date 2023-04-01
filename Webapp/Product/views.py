@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import CreateUserForm
+from .forms import CreateUserForm, addTaskForm
 import cx_Oracle
 import pandas as pd
+
 
 cx_Oracle.init_oracle_client(lib_dir=r"D:/Oracle_libraries/instantclient_21_8")
 
@@ -34,17 +35,36 @@ def register(request):
     return render(request,'register.html',context=context) 
 
 def addTasks(*args):
+    conn=connection()
+    cursor = conn.cursor()
     sqlTxt = 'INSERT INTO Tasks values('
     for item in args:
         sqlTxt += str(item) + ", "
     sqlTxt += ")"
 
-    cur.execute(sqlTxt)
+    cursor.execute(sqlTxt)
 
-    records = cur.fetchall()
+    records = cursor.fetchall()
 
     df = pd.DataFrame.from_records(records, columns = [x[0] for x in cur.description])
     return df
+
+def addtask(request):
+    if request.method == 'GET':
+        return render(request, 'addtask.html', {'task':{}})
+    if(request.method == 'POST'):
+        form = addTaskForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            difficulty = form.cleaned_data['difficulty']
+            deadline = form.cleaned_data['deadline']
+            duration = form.cleaned_data['duration']
+            task_type = form.cleaned_data['task_type']
+            username = form.cleaned_data['username']
+            addTasks(title, description, difficulty, deadline, duration, task_type, username)
+    
+    return redirect('listtasks')
 
 
 def listtasks(request):
