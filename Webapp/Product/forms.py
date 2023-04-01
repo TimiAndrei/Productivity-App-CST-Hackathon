@@ -1,15 +1,6 @@
 from django.forms import ModelForm
 from django import forms
 
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-
-class CreateUserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'password1', 'password2']
-
-
 class addTaskForm(forms.Form):
     title = forms.CharField(max_length=100)
     description = forms.CharField(max_length=500)
@@ -18,4 +9,12 @@ class addTaskForm(forms.Form):
     visibility= forms.CharField(max_length=100)
     task_type = forms.CharField(max_length=100)
     username= forms.CharField(max_length=100)
+
+class addUserForm(forms.Form):
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)
+    clan_tag= forms.CharField(max_length=100)
+
     

@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 from math import floor
+from retrieve_data import *
 
 class task:
     title = None
@@ -33,6 +34,7 @@ class task:
         self.difficulty = difficulty
         self.deadline = deadline
         self.task_type = task_type
+
         print("Created task " + self.title + " for user ") 
 
     def finishTask(self):
