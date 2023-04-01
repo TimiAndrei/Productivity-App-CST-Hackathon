@@ -28,9 +28,7 @@ class user:
 
     # users can be part of a clan to see clan member's private stats and compete
     # with close friends 
-    clan_tag = None#de facut fail succ counter
-#la update points
-
+    clan_tag = None
 
     # basic constructor
     def __init__(self, first_name, last_name, password, clan_tag, username):
@@ -63,12 +61,13 @@ class user:
         self.success_counter += 1
 
 
+#for testing purposes below 
 
 u1 = user("Mircea", "Ionescu", "parola123", "CNMV", "mircea")
 u1.printvars()
 
 
-t1 = task("first_task", "this is my first task", True, "Easy", date.today(), "cool")
+t1 = task("first_task", "this is my first task", True, "Medium", date.today(), "cool")
 
 u1.addTask(t1)
 
