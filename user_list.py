@@ -61,8 +61,9 @@ class userList:
             
         return self.users[0:not_zero_aux] 
         
-    #humans work with usernames, computers work with objects
+    # returns an integer with the bracket corresponding to the given username
     def getUserBracket(self, username):
+        # humans work with usernames, computers work with objects
         the_user = self.getUserFromUsername(username)
         if the_user in self.getTop5():
             return int(5)
@@ -75,26 +76,32 @@ class userList:
         else:
             return 0
              
+    def getClan(self, clan_tag):
+        clan_users = []
+        for i in self.users:
+            if i.clan_tag == clan_tag:
+                clan_users.append(i)
+        return clan_users
 
 
 l = userList()
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U0")
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U1")
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U2")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U3")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U4")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U5")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U6")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U7")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV1", "U3")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV1", "U4")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV1", "U5")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV1", "U6")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV2", "U7")
 
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U8")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U9")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U10")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U11")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U12")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV2", "U8")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV3", "U9")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV4", "U10")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV4", "U11")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV5", "U12")
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U13")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U14")
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U15")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV5", "U14")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV5", "U15")
 
 l.users[0].points = 10
 l.users[1].points = 20
@@ -116,6 +123,4 @@ l.users[15].points = 74
 
 print(l.users)
 
-print(l.getTop25())
-
-print(l.getUserBracket("U0"))
+print(l.getClan("CNMV"))
