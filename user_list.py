@@ -8,18 +8,22 @@ class userList:
     def addUser(self, first_name, last_name, password, clan_tag, username):
         self.users.append(user(first_name=first_name, last_name=last_name, password=password, clan_tag=clan_tag, username=username))
 
-    # looks for an object having a specific username and deletes the user in question
-    def rmUser(self, username):
+    # self explanatory, quite useful function especially since username is supposed to be unique
+    def getUserFromUsername(self, username):
         for i in self.users:
             if i.username == username:
-                self.users.remove(i)
+                return i  
+
+    # looks for an object having a specific username and deletes the user in question
+    def rmUser(self, username):
+        self.users.remove(self.getUserFromUsername(username))    
 
     # sorts users and returns a list of size 5% of the wanted size
     def getTop5(self):
         self.users.sort(key=lambda user: user.points, reverse=True)
         
         #var to store the top 25%  
-        not_zero_aux = int(25/100 * len(self.users))
+        not_zero_aux = int(5/100 * len(self.users))
 
         #on small input you still want someone in the top % so it's never 0
         if not_zero_aux == 0:   
@@ -57,6 +61,20 @@ class userList:
             
         return self.users[0:not_zero_aux] 
         
+    #humans work with usernames, computers work with objects
+    def getUserBracket(self, username):
+        the_user = self.getUserFromUsername(username)
+        if the_user in self.getTop5():
+            return int(5)
+        elif the_user in self.getTop10():
+            return int(10)
+        elif the_user in self.getTop15():
+            return int(15)
+        elif the_user in self.getTop25():
+            return int(25)
+        else:
+            return 0
+             
 
 
 l = userList()
@@ -78,7 +96,6 @@ l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U13")
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U14")
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U15")
 
-
 l.users[0].points = 10
 l.users[1].points = 20
 l.users[2].points = 5
@@ -97,7 +114,8 @@ l.users[13].points = 41
 l.users[14].points = 59
 l.users[15].points = 74
 
-
 print(l.users)
 
-print(l.getTop15())
+print(l.getTop25())
+
+print(l.getUserBracket("U0"))
