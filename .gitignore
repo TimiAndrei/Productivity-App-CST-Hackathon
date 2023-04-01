@@ -12,3 +12,6 @@ Webapp/Product/__pycache__/models.cpython-310.pyc
 Webapp/Product/__pycache__/urls.cpython-310.pyc
 Webapp/Product/__pycache__/views.cpython-310.pyc
 Webapp/Product/migrations/__pycache__/__init__.cpython-310.pyc
+tasks.py
+user.py
+ProjectVenv
