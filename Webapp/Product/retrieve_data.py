@@ -1,12 +1,10 @@
 import cx_Oracle
 import pandas as pd
 
-cx_Oracle.init_oracle_client(lib_dir=r"C:\Users\xelar\Downloads\instantclient-basic-windows.x64-21.8.0.0.0dbru\instantclient_21_8")
+cx_Oracle.init_oracle_client(lib_dir=r"D:/Oracle_libraries/instantclient_21_8")
 
 # conStr = 'ioantudoranghel/ioantudor#16@193.226.51.37:1521/o11g'\
-conStr = 'system/parola@localhost:1522/xe'
-
-conn = cx_Oracle.connect(conStr)
+conn = cx_Oracle.connect(user='TIMI', password='BananaBanana', dsn="localhost/xepdb1")
 cur = conn.cursor()
 
 def addTasks(*args):
@@ -65,7 +63,7 @@ def getUsers():
 
 #con.commit()
 
-print(getTasks())
+# print(getTasks())
 
 cur.close()
 conn.close()

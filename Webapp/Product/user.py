@@ -1,5 +1,6 @@
 from tasks import task
 from datetime import date, timedelta
+from retrieve_data import *
 
 class user:
     #counters for failed/ successfully finished tasks. A task is considered failed when it's not done in time
@@ -7,6 +8,9 @@ class user:
 
     fail_counter = 0
     success_counter = 0
+    task_counter = 0
+    # the number of tasks the user has had
+    # this will be used for the index of the tasks
 
     # task vector to store all of the tasks associated with the user    
     task_list = []
@@ -59,6 +63,8 @@ class user:
         self.password = password
         self.clan_tag = clan_tag
         self.username = username
+
+        addUser(username, password, first_name, last_name, clan_tag, self.points, self.fail_counter, self.success_counter)
 
     # for debugging, prints everyting
     def printvars(self):
@@ -115,6 +121,11 @@ class user:
     # task vector
     def addTask(self, task):
         self.task_list.insert(0, task)
+        date_string = task.deadline.strftime("%m/%d/%Y")
+
+        duration = task.deadline - date.today()
+
+        addTasks(str(self.task_id), task.title, task.description, task.difficulty, "to_date({date}, 'DD-MM-YYYY')".format(date = date_string), "to_date({days}, '%DD')".format(days=duration.days), task.task_type, self.username)
 
     # when finishing a task we add 1 to the success counter and also remove the task 
     # from the user's task_list
