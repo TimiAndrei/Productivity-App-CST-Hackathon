@@ -10,5 +10,6 @@ urlpatterns=[
     path('register/',views.register, name='register'),
     path('listtasks/',views.listtasks, name='listtasks'),
     path('addtask/',views.addtask, name='addtask'),
+    path('adduser/',views.adduser, name='adduser'),
 
 ]
