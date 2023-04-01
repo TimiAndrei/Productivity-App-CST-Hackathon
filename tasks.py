@@ -1,7 +1,7 @@
 from datetime import date, timedelta
 from math import floor
 
-class tasks:
+class task:
     title = None
     # title of the task
     description = "Default Description"
