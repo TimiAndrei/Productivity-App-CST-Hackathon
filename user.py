@@ -4,7 +4,6 @@ from datetime import date
 class user:
     #counters for failed/ successfully finished tasks. A task is considered failed when it's not done in time
     #if someone fails a task a new deadline is automatically assigned adding 25% of the initial time
-
     fail_counter = 0
     success_counter = 0
 
@@ -38,6 +37,9 @@ class user:
         self.clan_tag = clan_tag
         self.username = username
 
+    def __repr__(self):
+        return self.username + ' ' + str(self.points) 
+
     # for debugging, prints everyting
     def printvars(self):
         print(self.first_name, self.last_name, self.password, self.clan_tag, self.username)
@@ -60,18 +62,5 @@ class user:
         self.task_list.remove(task)
         self.success_counter += 1
 
-
-#for testing purposes below 
-
-u1 = user("Mircea", "Ionescu", "parola123", "CNMV", "mircea")
-u1.printvars()
-
-
-t1 = task("first_task", "this is my first task", True, "Medium", date.today(), "cool")
-
-u1.addTask(t1)
-
-print(u1.task_list[0].title)
-
-u1.removeTask(u1.task_list[0])
-print(u1.success_counter, u1.task_list, u1.points)
+    def getPoints(self):
+        return self.points
