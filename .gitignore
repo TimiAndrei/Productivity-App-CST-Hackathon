@@ -1,0 +1,6 @@
+Webapp/Webapp/settings.py
+Webapp/Webapp/__pycache__/__init__.cpython-310.pyc
+Webapp/Webapp/__pycache__/settings.cpython-310.pyc
+Webapp/Webapp/__pycache__/urls.cpython-310.pyc
+Webapp/Webapp/__pycache__/wsgi.cpython-310.pyc
+Webapp/db.sqlite3
