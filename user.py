@@ -2,9 +2,10 @@
 # de aici voi avea o lista de taskuri
 
 class user:
+    # task vector to store all of the tasks associated with the user
     task_list = []
 
-    # task vector to store all of the tasks associated with the user
+    # a variable to store the user's points gained over time
     points = 0
 
     # user's first name 
