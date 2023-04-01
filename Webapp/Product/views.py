@@ -1,11 +1,16 @@
+import sys
+sys.path.append('./Product')
+from tasks import task
+from user import user
+from user_list import userList
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import CreateUserForm, addTaskForm
+from .forms import addUserForm, addTaskForm
 import cx_Oracle
 import pandas as pd
-from user import user
-from tasks import task
-from user_list import userList
+
+# from user import user
+
 
 
 cx_Oracle.init_oracle_client(lib_dir=r"D:/Oracle_libraries/instantclient_21_8")
@@ -27,15 +32,22 @@ def my_login(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 
-def register(request):
-    form = CreateUserForm()
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
+
+def adduser(request):
+    if request.method == 'GET':
+        return render(request, 'register.html', {'user':{}})
+    if(request.method == 'POST'):
+        form = addUserForm(request.POST)
         if form.is_valid():
-            form.save()
-            return HttpResponse('User registered successfully!')
-    context = {'form':form}
-    return render(request,'register.html',context=context) 
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            clan_tag = form.cleaned_data['clan_tag']
+            new_user = user(first_name, last_name, username, password, clan_tag)
+            # addUsers(username, password)
+    
+    return redirect('listusers')
 
 def addtask(request):
     if request.method == 'GET':
