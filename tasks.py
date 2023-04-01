@@ -53,6 +53,16 @@ class tasks:
 
         return points
 
+    def isExpired(self):
+        # this will check if the task has extended over the deadline
+        # if it is the case, it will be counted as a failed task, but the deadline will be extended by 25% of the initial duration
+        if(date.today() > self.deadline):
+            self.deadline += self.deadline.days() * 0.25
+            print("New deadline: {}", self.deadline)
+            return True
+        
+        return False
+
 # Task1 = tasks("Primul task", "Hai sa adaugan si o descirere", True, "Hard", date.today(), "Task")
 
 # print(vars(Task1))
