@@ -15,6 +15,7 @@ class addTaskForm(forms.Form):
     description = forms.CharField(max_length=500)
     difficulty = forms.IntegerField()
     deadline = forms.DateField()
-    duration= forms.DateField()
+    visibility= forms.CharField(max_length=100)
     task_type = forms.CharField(max_length=100)
     username= forms.CharField(max_length=100)
+    

@@ -12,14 +12,17 @@
 
     <title> Productivity-App-CST-Hackathon </title>
 
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+
 </head>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center" style="padding:0;">
 
     <a class="navbar-brand main-heading">
 
-        &nbsp; TaskTamer
+        <img src="/static/images/logotr.svg" style="width:150px; height:150px;" alt="Logo" />&nbsp; <b>TaskTamer</b>
+        <small> by Code Hounds</small>
 
     </a>
 
@@ -32,47 +35,23 @@
 
 
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-
-
         <ul class="navbar-nav ms-auto">
-
-
             &nbsp; &nbsp; &nbsp;
-
-
-
-
             <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'register' %}">Register</a>
-
-
             &nbsp; &nbsp; &nbsp;
-
             <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'my-login' %}">Login</a>
-
             &nbsp; &nbsp; &nbsp;
-
-
         </ul>
-
-
     </div>
-
-
 </nav>
-
-<br>
-
 
 <body>
 
-    <br>
-    <br>
-
-    <div class="text-center">
+    <div class="text-center" style="margin-top:20px">
 
         <h3> A new day, a new task ...</h3>
 
-        <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'listtasks' %}">Get to my tasks</a>
+        <a class=" btn btn-primary" type="button" id="custom_button" href="{% url 'listtasks' %}">Get to my tasks</a>
         <br><br>
         <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'addtask' %}">Add a task</a>
     </div>

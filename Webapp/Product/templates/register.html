@@ -12,32 +12,72 @@
 
     <title> TaskTamer </title>
 
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
+
 </head>
 
-<h2> Register Page</h2>
-<div class="form">
-    <form method="POST" autocomplete="off">
-        {% csrf_token %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center" style="padding:0;">
+
+    <a class="navbar-brand main-heading">
+
+        <img src="/static/images/logotr.svg" style="width:150px; height:150px;" alt="Logo" />&nbsp; <b>TaskTamer</b>
+        <small> by Code Hounds</small>
+
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
 
 
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="form-label mt-4">Username</label>
-            <input type="email" class="form-control" placeholder="Enter username">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1" class="form-label mt-4">Confirm Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
+    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'register' %}">Register</a>
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'my-login' %}">Login</a>
+            &nbsp; &nbsp; &nbsp;
+        </ul>
+    </div>
+</nav>
+
+<h2 class="text-center" style="padding:10px">Register Page</h2>
+
+<div class="text-center card border-secondary mb-3"
+    style="width: 40%; height:auto; min-width:280px; margin: auto; position: absolute; left: 0; right: 0; padding:1em">
+    <div class="form">
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label class="form-label mt-4">First Name</label>
+                <input type="text" class="form-control" placeholder="Enter first name">
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Last Name</label>
+                <input type="text" class="form-control" placeholder="Enter last name">
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Username</label>
+                <input type="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Password</label>
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label class="form-label mt-4">Clan Tag</label>
+                <input type="text" class="form-control" placeholder="Enter your clan tag">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/" class="btn btn-primary">Cancel</a>
+
+        </form>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="/" class="btn btn-primary">Cancel</a>
-
-    </form>
-    <br>
+    </div>
 </div>
 
 </html>
