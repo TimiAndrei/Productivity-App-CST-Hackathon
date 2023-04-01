@@ -81,8 +81,11 @@ class userList:
         for i in self.users:
             if i.clan_tag == clan_tag:
                 clan_users.append(i)
-        return clan_users
+        
+        clan_users.sort(key=lambda user: user.points, reverse=True)
 
+        return clan_users
+    
 
 l = userList()
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U0")

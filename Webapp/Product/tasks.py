@@ -1,6 +1,6 @@
 from datetime import date, timedelta
 from math import floor
-from retrieve_data import *
+# from retrieve_data import *
 
 class task:
     title = None

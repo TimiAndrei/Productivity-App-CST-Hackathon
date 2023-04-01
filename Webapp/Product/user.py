@@ -66,6 +66,9 @@ class user:
 
         addUser(username, password, first_name, last_name, clan_tag, self.points, self.fail_counter, self.success_counter)
 
+    def __repr__(self):
+        return self.username + " " + str(self.points)
+
     # for debugging, prints everyting
     def printvars(self):
         print(self.first_name, self.last_name, self.password, self.clan_tag, self.username)
