@@ -24,7 +24,7 @@ class task:
         "Medium" : 1.4,
         "Hard" : 2
     }
-    # this is the point multiplier based on the difficulty of the task
+    # this is the point multiplier based on the difficulty of the task 
 
     def __init__(self, title, description, visibility, difficulty, deadline, task_type):
         self.title = title
@@ -51,7 +51,7 @@ class task:
         points += points * used_days_percentage
         # adding bonus points based on how much time was left on the task
 
-        return points
+        return points, self.task_type
 
     def isExpired(self):
         # this will check if the task has extended over the deadline
