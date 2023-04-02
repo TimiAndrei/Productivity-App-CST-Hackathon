@@ -1,5 +1,6 @@
 from user import user
 from tasks import task
+from datetime import date
 
 class userList:
     users = []
@@ -108,6 +109,7 @@ l.addUser("Mircea", "Ionescu", "parola123", "CNMV5", "U14")
 l.addUser("Mircea", "Ionescu", "parola123", "CNMV5", "U15")
 
 l.users[0].points = 10
+l.users[0].addTask(task("Primul task", "Hai sa adaugan si o descirere", True, "Hard", date.today(), "Task"))
 l.users[1].points = 20
 l.users[2].points = 5
 l.users[3].points = 15
@@ -125,6 +127,6 @@ l.users[13].points = 41
 l.users[14].points = 59
 l.users[15].points = 74
 
-print(l.users)
+# print(l.users)
 
-print(l.getClan("CNMV"))
+# print(l.getClan("CNMV"))
