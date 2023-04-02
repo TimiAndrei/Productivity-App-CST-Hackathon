@@ -33,21 +33,6 @@ def register(request):
             return HttpResponse("User added")
     return redirect('my-login')
 
-@login_required
-def dashboard(request,username):
-    if request.method == 'GET':
-        return render(request, 'dashboard.html')
-    person=l.getUserFromUsername(username)
-    clan=l.getClan(person.clan_tag)
-    top=l.getUserBracket(username)
-    badges=person.badges
-    impr_badges=badges["Improvements"]
-    new_tech_badges=badges["New Technology"]
-
-    tasks = person.task_list
-
-    return render(request,'dashboard.html',{'person':person, 'clans':clan, 'top':top, 'improve':impr_badges, 'newtech':new_tech_badges, 'tasks':tasks})
-
 def my_login(request):
     if request.method == 'GET':
         return render(request, 'my-login.html')
@@ -59,13 +44,25 @@ def my_login(request):
         # if form.is_valid():
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
-        print(username)
+        # print(username)
         for person in l.users:
             if username == person.username and password == person.password:
                 return redirect('dashboard', username=person.username)
                 # return redirect('dashboard', username = request.POST.get('username'))     
     return render(request,'my-login.html')
 
+# @login_required
+def dashboard(request,username):
+    # if(request.method == 'GET'):
+    #     return render(request,'dashboard.html')
+    person=l.getUserFromUsername(username)
+    clan=l.getClan(person.clan_tag)
+    top=l.getUserBracket(username)
+    badges=person.badges
+    impr_badges=badges["Improvements"]
+    new_tech_badges=badges["New Technology"]
+    tasks = person.task_list
+    return render(request,'dashboard.html',{'person':person, 'clans':clan, 'top':top, 'improve':impr_badges, 'newtech':new_tech_badges, 'tasks':tasks})
 
 
 def adduser(request):
@@ -80,7 +77,6 @@ def adduser(request):
             password = form.cleaned_data['password']
             clan_tag = form.cleaned_data['clan_tag']
             new_user = user(first_name, last_name, username, password, clan_tag)
-            # addUsers(username, password)
     
     return redirect('listusers')
 

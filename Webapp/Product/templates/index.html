@@ -38,9 +38,9 @@
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'register' %}">Register</a>
+            <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'my-login' %}">Login</a>
+            <a class="btn btn-primary" type="button" href="{% url 'my-login' %}">Login</a>
             &nbsp; &nbsp; &nbsp;
         </ul>
     </div>
@@ -48,13 +48,14 @@
 
 <body>
 
-    <div class="text-center" style="margin-top:20px">
+    <div class=" text-center card border-secondary mb-3"
+        style=" height:auto; width:25%; margin: auto; position: absolute; right:0; left:0; padding:1em">
 
         <h3> A new day, a new task ...</h3>
         <br><br>
-        <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'addtask' %}">Add a task</a>
+        <a class="btn btn-primary" type="button" href="{% url 'addtask' %}">Add a task</a>
         <br><br>
-        <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'dashboard' %}">Dashboard</a>
+        <a class="btn btn-primary" type="button" href="{% url 'dashboard' %}">Dashboard</a>
     </div>
     </table>
 

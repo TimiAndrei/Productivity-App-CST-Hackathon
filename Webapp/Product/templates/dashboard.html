@@ -38,9 +38,9 @@
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'register' %}">Register</a>
+            <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'my-login' %}">Login</a>
+            <a class="btn btn-primary" type="button" href="{% url 'my-login' %}">Login</a>
             &nbsp; &nbsp; &nbsp;
         </ul>
     </div>
@@ -56,7 +56,7 @@
         style="width: 80%; height:auto; min-width:700px; margin: auto; position: absolute; right:0; left:0; padding:1em">
         <div style="display:flex; flex-direction:row; ">
             <div>
-                <h4>Nume : {{ person.first_name }}</h4>
+                <h4>Nume : {{ person.first_name }} {{person.last_name}}</h4>
                 <h4>Username : {{ person.username }}</h4>
             </div>
             <div style="position:absolute; margin-left:43.2%;">
@@ -76,9 +76,9 @@
 
                     <tr>
 
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
                         <th scope="col">Username</th>
+                        <th scope="col">Current Streak</th>
+                        <th scope="col">Points</th>
 
                     </tr>
 
@@ -90,9 +90,9 @@
                     {% for clan in clans %}
                     <tr>
 
-                        <td>{{ clan.first_name }}</td>
-                        <td>{{ clan.last_name }}</td>
                         <td>{{ clan.username }}</td>
+                        <td>{{ clan.current_streak }}</td>
+                        <td>{{ clan.points }}</td>
 
                     </tr>
                     {% endfor %}
@@ -103,14 +103,15 @@
         <div class="card border-success mb-3"
             style="width: 30%; height:auto; min-width:400px; margin: auto; position: absolute; top:150px; left:20px; padding:1em">
 
-            <h2>You have placed in the top : {{top}} %</h2>
+            <h2 style="margin-left:12px">You have placed in the top : <span style="margin-left:45%;">{{top}}%</span>
+            </h2>
         </div>
 
         <div class="card border-success mb-3"
             style="width: 30%; height:auto; min-width:300px; margin: auto; position: absolute; top:150px; left:35%; padding:1em">
 
-            <h2><img src="../static/images/high_tech_no_bg.png" style="width:90px; height:90px">x{{newtech}}
-                <img src="../static/images/level_up_no_bg.png" style="width:90px; height:90px">x{{improve}}
+            <h2><img src="../../static/images/high_tech_no_bg.png" style="width:90px; height:90px">x{{newtech}}
+                <img src="../../static/images/level_up_no_bg.png" style="width:90px; height:90px">x{{improve}}
             </h2>
         </div>
     </div>
@@ -123,9 +124,12 @@
 
                 <tr>
 
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
+                    <th scope="col">Task Name</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Username</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Task Type</th>
 
                 </tr>
 
@@ -140,6 +144,9 @@
                     <td>{{ task.title }}</td>
                     <td>{{ task.description }}</td>
                     <td>{{ task.difficulty }}</td>
+                    <td>{{ task.deadline }}</td>
+                    <td>{{ task.duration }}</td>
+                    <td>{{ task.task_type }}</td>
 
                 </tr>
                 {% endfor %}
