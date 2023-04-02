@@ -12,7 +12,7 @@ def addTasks(*args):
     for item in args:
         sqlTxt += str(item) + ", "
 
-    sqlTxt = sqlTxt.rstrip(",")
+    sqlTxt = sqlTxt.rstrip(", ")
     sqlTxt += ")"
 
     cur.execute(sqlTxt)
@@ -39,7 +39,7 @@ def addUser(*args):
     for item in args:
         sqlTxt += str(item) + ", "
 
-    sqlTxt = sqlTxt.rstrip(",")
+    sqlTxt = sqlTxt.rstrip(", ")
     sqlTxt += ")"
 
     cur.execute(sqlTxt)

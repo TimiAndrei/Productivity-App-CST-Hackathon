@@ -128,7 +128,7 @@ class user:
 
         duration = task.deadline - date.today()
 
-        addTasks(str(self.task_id), task.title, task.description, task.difficulty, "to_date({date}, 'DD-MM-YYYY')".format(date = date_string), "to_date({days}, '%DD')".format(days=duration.days), task.task_type, self.username)
+        addTasks(str(self.task_id), task.title, task.description, task.difficulty, "to_date({date}, 'DD-MM-YYYY')".format(date = date_string), "to_date({days}, 'DD')".format(days=duration.days), task.task_type, self.username)
 
     # when finishing a task we add 1 to the success counter and also remove the task 
     # from the user's task_list
