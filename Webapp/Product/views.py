@@ -12,15 +12,6 @@ from user_list import l
 
 # from user import user
 
-
-
-cx_Oracle.init_oracle_client(lib_dir=r"D:/Oracle_libraries/instantclient_21_8")
-
-def connection():
-    conn = cx_Oracle.connect(user='TIMI', password='BananaBanana', dsn="localhost/xepdb1")
-    return conn
-
-
 def index(request):
     return render(request,'index.html')
 
@@ -76,15 +67,4 @@ def addtask(request):
     
     return redirect('listtasks')
 
-
-def listtasks(request):
-    conn=connection()
-    cursor = conn.cursor()
-    sqlTxt = 'SELECT * FROM Tasks'
-    tasks=[]
-    cursor.execute(sqlTxt)
-    for row in cursor.fetchall():
-        tasks.append({"title": row[0], "description": row[1], "difficulty": row[2], "deadline": row[3], "duration": row[4], "task_type": row[5], "username": row[6]})
-    conn.close()
-    return render(request, 'listtasks.html', {'tasks': tasks})
 

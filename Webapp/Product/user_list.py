@@ -125,6 +125,6 @@ l.users[13].points = 41
 l.users[14].points = 59
 l.users[15].points = 74
 
-print(l.users)
+# print(l.users)
 
-print(l.getClan("CNMV"))
+# print(l.getClan("CNMV"))

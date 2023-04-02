@@ -8,6 +8,8 @@ conn = cx_Oracle.connect(user='TIMI', password='BananaBanana', dsn="localhost/xe
 cur = conn.cursor()
 
 def addTasks(*args):
+    conn = cx_Oracle.connect(user='TIMI', password='BananaBanana', dsn="localhost/xepdb1")
+    cur = conn.cursor()
     sqlTxt = 'INSERT INTO Tasks values('
     for item in args:
         sqlTxt += str(item) + ", "
@@ -25,6 +27,8 @@ def addTasks(*args):
     return df
 
 def getTasks():
+    conn = cx_Oracle.connect(user='TIMI', password='BananaBanana', dsn="localhost/xepdb1")
+    cur = conn.cursor()
     sqlTxt = 'SELECT * FROM Tasks'
 
     cur.execute(sqlTxt)
@@ -35,12 +39,15 @@ def getTasks():
     return df
 
 def addUser(*args):
+    conn = cx_Oracle.connect(user='TIMI', password='BananaBanana', dsn='localhost/xepdb1')
+    cur = conn.cursor()
     sqlTxt = 'INSERT INTO Users values('
     for item in args:
-        sqlTxt += str(item) + ", "
+        sqlTxt += "\'" + str(item) + "\'" + ', '
 
-    sqlTxt = sqlTxt.rstrip(", ")
-    sqlTxt += ")"
+    sqlTxt = sqlTxt.rstrip(', ')
+    sqlTxt += ')'
+    print(sqlTxt)
 
     cur.execute(sqlTxt)
 
@@ -52,6 +59,8 @@ def addUser(*args):
     return df
 
 def getUsers():
+    conn = cx_Oracle.connect(user='TIMI', password='BananaBanana', dsn="localhost/xepdb1")
+    cur = conn.cursor()
     sqlTxt = 'SELECT * FROM Users'
 
     cur.execute(sqlTxt)

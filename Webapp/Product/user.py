@@ -1,6 +1,6 @@
 from tasks import task
 from datetime import date, timedelta
-from retrieve_data import *
+# from retrieve_data import *
 
 class user:
     #counters for failed/ successfully finished tasks. A task is considered failed when it's not done in time
@@ -64,7 +64,7 @@ class user:
         self.clan_tag = clan_tag
         self.username = username
 
-        addUser(username, password, first_name, last_name, clan_tag, self.points, self.fail_counter, self.success_counter)
+        # addUser(username, password, first_name, last_name, clan_tag, self.points, self.fail_counter, self.success_counter)
 
     def __repr__(self):
         return self.username + " " + str(self.points)
@@ -128,7 +128,7 @@ class user:
 
         duration = task.deadline - date.today()
 
-        addTasks(str(self.task_id), task.title, task.description, task.difficulty, "to_date({date}, 'DD-MM-YYYY')".format(date = date_string), "to_date({days}, 'DD')".format(days=duration.days), task.task_type, self.username)
+        # addTasks(str(self.task_id), task.title, task.description, task.difficulty, "to_date({date}, 'DD-MM-YYYY')".format(date = date_string), "to_date({days}, 'DD')".format(days=duration.days), task.task_type, self.username)
 
     # when finishing a task we add 1 to the success counter and also remove the task 
     # from the user's task_list
@@ -142,15 +142,15 @@ class user:
 
 #for testing purposes below 
 
-u1 = user("Mircea", "Ionescu", "parola123", "CNMV", "mircea")
-u1.printvars()
+# u1 = user("Mircea", "Ionescu", "parola123", "CNMV", "mircea")
+# u1.printvars()
 
 
-t1 = task("first_task", "this is my first task", True, "Medium", date.today(), "New Technology")
+# t1 = task("first_task", "this is my first task", True, "Medium", date.today(), "New Technology")
 
-u1.addTask(t1)
+# u1.addTask(t1)
 
-print(u1.task_list[0].title)
+# print(u1.task_list[0].title)
 
-u1.removeTask(u1.task_list[0])
-print(u1.success_counter, u1.task_list, u1.points)
+# u1.removeTask(u1.task_list[0])
+# print(u1.success_counter, u1.task_list, u1.points)
