@@ -12,7 +12,6 @@ class userList:
     # self explanatory, quite useful function especially since username is supposed to be unique
     def getUserFromUsername(self, username):
         for i in self.users:
-            print(i)
             if i.username == username:
                 return i  
 
@@ -90,14 +89,15 @@ class userList:
     
 
 l = userList()
-l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "U0")
-l.addUser("Ioan", "Alexandru", "parola123", "CNMV", "U1")
-l.addUser("Andrei", "Timotei", "parola123", "CNMV", "U2")
-l.addUser("Drăgan", "Mihăiță", "ciscoenapa55", "CNMV1", "U3")
-l.addUser("Marciu", "Andrei", "parola123", "CNMV", "U4")
-l.addUser("Dobrovat", "Poo", "parola123", "CNMV", "U5")
-l.addUser("Ana", "Uban", "parola123", "CNMV", "U6")
-l.addUser("Mihai", "Bratu", "parola123", "CNMV", "U7")
+l.addUser("Mircea", "Ionescu", "parola123", "CNMV", "User0")
+l.addUser("Ioan", "Alexandru", "parola123", "CNMV", "User1")
+l.addUser("Andrei", "Timotei", "parola123", "CNMV", "User2")
+l.addUser("Drăgan", "Mihăiță", "ciscoenapa55", "CNMV1", "User3")
+l.addUser("Marciu", "Andrei", "parola123", "CNMV", "User4")
+l.addUser("Dobrovat", "Poo", "parola123", "CNMV", "User5")
+l.addUser("Ana", "Uban", "parola123", "CNMV", "User6")
+l.addUser("Mihai", "Bratu", "parola123", "CNMV", "User7")
+l.addUser("Ioana", "Musat", "parola123", "CNMV", "User8")
 
 # l.addUser("Mircea", "Ionescu", "parola123", "CNMV2", "U8")
 # l.addUser("Mircea", "Ionescu", "parola123", "CNMV3", "U9")
