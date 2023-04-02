@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from .forms import addUserForm, addTaskForm
 import cx_Oracle
 import pandas as pd
+from user_list import l
 
 # from user import user
 
@@ -29,8 +30,12 @@ def register(request):
 def my_login(request):
     return render(request,'my-login.html')
 
-def dashboard(request):
-    return render(request,'dashboard.html')
+def dashboard(request,username):
+    person=l.getUserFromUsername(username)
+    clan=l.getClan(person.clan_tag)
+    top=l.getUserBracket(username)
+    badges=person.badges
+    return render(request,'dashboard.html',{'person':person, 'clans':clan, 'top':top, 'badges':badges})
 
 
 def adduser(request):
@@ -82,3 +87,4 @@ def listtasks(request):
         tasks.append({"title": row[0], "description": row[1], "difficulty": row[2], "deadline": row[3], "duration": row[4], "task_type": row[5], "username": row[6]})
     conn.close()
     return render(request, 'listtasks.html', {'tasks': tasks})
+

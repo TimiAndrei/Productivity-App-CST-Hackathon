@@ -11,6 +11,7 @@ class userList:
     # self explanatory, quite useful function especially since username is supposed to be unique
     def getUserFromUsername(self, username):
         for i in self.users:
+            print(i)
             if i.username == username:
                 return i  
 
