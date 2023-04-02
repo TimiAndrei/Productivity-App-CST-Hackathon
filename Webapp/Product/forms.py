@@ -17,4 +17,8 @@ class addUserForm(forms.Form):
     password = forms.CharField(max_length=100)
     clan_tag= forms.CharField(max_length=100)
 
+class loginForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)
+
     
