@@ -53,33 +53,30 @@
 </div>
 <div class="card border-secondary mb-3"
     style="width: 80%; height:500px; min-width:700px; margin: auto; position: absolute; right:0; left:0; padding:1em">
-    <div style="display:flex; flex-direction:row">
+    <div style="display:flex; flex-direction:row; ">
         <div>
-            <h4>Nume</h4>
-            <h4>Username</h4>
+            <h4>Nume : {{ person.first_name }}</h4>
+            <h4>Username : {{ person.username }}</h4>
         </div>
-        <div style="margin:auto; left:0; right:0; position:absolute;">
-            <h4>Streaks</h4>
+        <div style="position:absolute; margin-left:43.2%;">
+            <h4>Current Streak : {{person.current_streak}}</h4>
+            <h4>Max Streak : {{person.max_streak}}</h4>
         </div>
-        <div style="display:block; right:10px; position:absolute">
-            <h4>Point</h4>
-            <h4>Clan tag</h4>
+        <div style="position:absolute; margin:auto; right:10px;">
+            <h4>Points : {{person.points}}</h4>
+            <h4>Clan Tag : {{person.clan_tag}}</h4>
         </div>
     </div>
     <div class="card border-success mb-3"
-        style="width: 30%; height:auto; min-width:700px; margin: auto; position: absolute; top:100px; left:20px; padding:1em">
+        style="width: 30%; height:auto; min-width:400px; margin: auto; position: absolute; top:150px; right:20px; padding:1em">
         <table class="table">
 
             <thead>
 
                 <tr>
 
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Difficulty</th>
-                    <th scope="col">Deadline</th>
-                    <th scope="col">Duration</th>
-                    <th scope="col">Task_type</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
                     <th scope="col">Username</th>
 
                 </tr>
@@ -88,38 +85,34 @@
 
             <tbody>
 
-                {% for task in tasks %}
 
+                {% for clan in clans %}
                 <tr>
 
-                    <td>{{ task.title }}</td>
-                    <td>{{ task.description }}</td>
-                    <td>{{ task.difficulty }}</td>
-                    <td>{{ task.deadline }}</td>
-                    <td>{{ task.duration }}</td>
-                    <td>{{ task.task_type }}</td>
-                    <td>{{ task.username }}</td>
+                    <td>{{ clan.first_name }}</td>
+                    <td>{{ clan.last_name }}</td>
+                    <td>{{ clan.username }}</td>
 
                 </tr>
-
                 {% endfor %}
 
             </tbody>
         </table>
     </div>
+    <div class="card border-success mb-3"
+        style="width: 30%; height:auto; min-width:400px; margin: auto; position: absolute; top:150px; left:20px; padding:1em">
+
+        <h2>You have placed in the top : {{top}} %</h2>
+    </div>
+
+    <div class="card border-success mb-3"
+        style="width: 30%; height:auto; min-width:300px; margin: auto; position: absolute; top:150px; left:35%; padding:1em">
+
+        <h2><img src="../static/images/favicon.png" style="width:90px; height:90px">x{{top}} </h2>
+    </div>
 </div>
 <br>
 
-<script src="{% static 'js/app.js' %}"></script>
 
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-
-
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-
-    </script>
 
 </html>
