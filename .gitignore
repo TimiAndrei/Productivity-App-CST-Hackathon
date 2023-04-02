@@ -21,3 +21,4 @@ ProjectVenv
 Webapp/Product/__pycache__/user_list.cpython-310.pyc
 Webapp/Product/__pycache__/user.cpython-310.pyc
 Webapp/Product/__pycache__/tasks.cpython-310.pyc
+Webapp/Product/static/css/style.css
