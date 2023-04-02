@@ -51,68 +51,69 @@
     <h2> Dashboard</h2>
 
 </div>
-<div class="card border-secondary mb-3"
-    style="width: 80%; height:500px; min-width:700px; margin: auto; position: absolute; right:0; left:0; padding:1em">
-    <div style="display:flex; flex-direction:row; ">
-        <div>
-            <h4>Nume : {{ person.first_name }}</h4>
-            <h4>Username : {{ person.username }}</h4>
+<div style="display:flex; flex-wrap:flex;">
+    <div class="card border-secondary mb-3"
+        style="width: 80%; height:500px; min-width:700px; margin: auto; position: absolute; right:0; left:0; padding:1em">
+        <div style="display:flex; flex-direction:row; ">
+            <div>
+                <h4>Nume : {{ person.first_name }}</h4>
+                <h4>Username : {{ person.username }}</h4>
+            </div>
+            <div style="position:absolute; margin-left:43.2%;">
+                <h4>Current Streak : {{person.current_streak}}</h4>
+                <h4>Max Streak : {{person.max_streak}}</h4>
+            </div>
+            <div style="position:absolute; margin:auto; right:10px;">
+                <h4>Points : {{person.points}}</h4>
+                <h4>Clan Tag : {{person.clan_tag}}</h4>
+            </div>
         </div>
-        <div style="position:absolute; margin-left:43.2%;">
-            <h4>Current Streak : {{person.current_streak}}</h4>
-            <h4>Max Streak : {{person.max_streak}}</h4>
+        <div class="card border-success mb-3"
+            style="width: 30%; height:auto; min-width:400px; margin: auto; position: absolute; top:150px; right:20px; padding:1em">
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Username</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+
+                    {% for clan in clans %}
+                    <tr>
+
+                        <td>{{ clan.first_name }}</td>
+                        <td>{{ clan.last_name }}</td>
+                        <td>{{ clan.username }}</td>
+
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
         </div>
-        <div style="position:absolute; margin:auto; right:10px;">
-            <h4>Points : {{person.points}}</h4>
-            <h4>Clan Tag : {{person.clan_tag}}</h4>
+        <div class="card border-success mb-3"
+            style="width: 30%; height:auto; min-width:400px; margin: auto; position: absolute; top:150px; left:20px; padding:1em">
+
+            <h2>You have placed in the top : {{top}} %</h2>
         </div>
-    </div>
-    <div class="card border-success mb-3"
-        style="width: 30%; height:auto; min-width:400px; margin: auto; position: absolute; top:150px; right:20px; padding:1em">
-        <table class="table">
 
-            <thead>
+        <div class="card border-success mb-3"
+            style="width: 30%; height:auto; min-width:300px; margin: auto; position: absolute; top:150px; left:35%; padding:1em">
 
-                <tr>
-
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Username</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-
-                {% for clan in clans %}
-                <tr>
-
-                    <td>{{ clan.first_name }}</td>
-                    <td>{{ clan.last_name }}</td>
-                    <td>{{ clan.username }}</td>
-
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
-    </div>
-    <div class="card border-success mb-3"
-        style="width: 30%; height:auto; min-width:400px; margin: auto; position: absolute; top:150px; left:20px; padding:1em">
-
-        <h2>You have placed in the top : {{top}} %</h2>
-    </div>
-
-    <div class="card border-success mb-3"
-        style="width: 30%; height:auto; min-width:300px; margin: auto; position: absolute; top:150px; left:35%; padding:1em">
-
-        <h2><img src="../static/images/favicon.png" style="width:90px; height:90px">x{{top}} </h2>
+            <h2><img src="../static/images/high_tech_cropped.jpg" style="width:90px; height:90px">x{{top}}
+                <img src="../static/images/level_up_cropped.jpg" style="width:90px; height:90px">x{{top}}
+            </h2>
+        </div>
     </div>
 </div>
-<br>
-
-
 
 </html>
