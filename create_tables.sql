@@ -23,3 +23,4 @@ CREATE TABLE Tasks
     
     constraint FK_task_user foreign key (username) references users (username) on delete cascade
 );
+
