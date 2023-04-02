@@ -11,5 +11,5 @@ urlpatterns=[
     path('listtasks/',views.listtasks, name='listtasks'),
     path('addtask/',views.addtask, name='addtask'),
     path('adduser/',views.adduser, name='adduser'),
-
+    path('dashboard/<str:username>',views.dashboard, name='dashboard'),
 ]

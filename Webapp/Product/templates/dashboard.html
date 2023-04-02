@@ -10,14 +10,116 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 
-    <title> TaskTamer </title>
+    <title> Productivity-App-CST-Hackathon </title>
 
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
 
 </head>
 
-<h2> Dashboard</h2>
 
-<a href="{% url 'user-logout' %}">Logout</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center"
+    style="padding:0; margin-bottom:10px;">
+
+    <a class="navbar-brand main-heading">
+
+        <img src="/static/images/logotr.svg" style="width:150px; height:150px;" alt="Logo" />&nbsp; <b>TaskTamer</b>
+        <small> by Code Hounds</small>
+
+    </a>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+
+    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'register' %}">Register</a>
+            &nbsp; &nbsp; &nbsp;
+            <a class="btn btn-primary" type="button" id="custom_button" href="{% url 'my-login' %}">Login</a>
+            &nbsp; &nbsp; &nbsp;
+        </ul>
+    </div>
+</nav>
+
+<div class="text-center">
+
+    <h2> Dashboard</h2>
+
+</div>
+<div class="card border-secondary mb-3"
+    style="width: 80%; height:500px; min-width:700px; margin: auto; position: absolute; right:0; left:0; padding:1em">
+    <div style="display:flex; flex-direction:row">
+        <div>
+            <h4>Nume</h4>
+            <h4>Username</h4>
+        </div>
+        <div style="margin:auto; left:0; right:0; position:absolute;">
+            <h4>Streaks</h4>
+        </div>
+        <div style="display:block; right:10px; position:absolute">
+            <h4>Point</h4>
+            <h4>Clan tag</h4>
+        </div>
+    </div>
+    <div class="card border-success mb-3"
+        style="width: 30%; height:auto; min-width:700px; margin: auto; position: absolute; top:100px; left:20px; padding:1em">
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Difficulty</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Task_type</th>
+                    <th scope="col">Username</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for task in tasks %}
+
+                <tr>
+
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.difficulty }}</td>
+                    <td>{{ task.deadline }}</td>
+                    <td>{{ task.duration }}</td>
+                    <td>{{ task.task_type }}</td>
+                    <td>{{ task.username }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+
+    </script>
 
 </html>
