@@ -36,44 +36,53 @@
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
+            <!-- <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" href="{% url 'my-login' %}">Login</a>
+            <a class="btn btn-primary" type="button" href="{% url 'my-login' %}">Login</a> -->
             &nbsp; &nbsp; &nbsp;
         </ul>
     </div>
 </nav>
+
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">{{message}}</div>
+    {% endfor %}
+    {% endif %}
+</div>
 
 <h2 class="text-center" style="padding:10px">Register Page</h2>
 
 <div class="text-center card border-secondary mb-3"
     style="width: 40%; height:auto; min-width:280px; margin: auto; position: absolute; left: 0; right: 0; padding:1em">
     <div class="form">
-        <form method="POST" autocomplete="off">
+        <form action="" method="POST" autocomplete="off">
             {% csrf_token %}
 
             <div class="form-group">
-                <label class="form-label mt-4">First Name</label>
-                <input type="text" class="form-control" placeholder="Enter first name">
+                <label for="first_name" class="form-label mt-4">First Name</label>
+                <input type="text" class="form-control" name="first_name" id="first_name"
+                    placeholder="Enter first name">
             </div>
             <div class="form-group">
-                <label class="form-label mt-4">Last Name</label>
-                <input type="text" class="form-control" placeholder="Enter last name">
+                <label for="last_name" class="form-label mt-4">Last Name</label>
+                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter last name">
             </div>
             <div class="form-group">
-                <label class="form-label mt-4">Username</label>
-                <input type="username" class="form-control" placeholder="Username">
+                <label for="username" class="form-label mt-4">Username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username">
             </div>
             <div class="form-group">
-                <label class="form-label mt-4">Password</label>
-                <input type="password" class="form-control" placeholder="Password">
+                <label for="password" class="form-label mt-4">Password</label>
+                <input type="text" class="form-control" name="password" id="password" placeholder="Password">
             </div>
             <div class="form-group">
-                <label class="form-label mt-4">Clan Tag</label>
-                <input type="text" class="form-control" placeholder="Enter your clan tag">
+                <label for="clan_tag" class="form-label mt-4">Clan Tag</label>
+                <input type="text" class="form-control" name="clan_tag" id="clan_tag" placeholder="Enter your clan tag">
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="btnAdd" class="btn btn-primary">Sign up</button>
             <a href="/" class="btn btn-primary">Cancel</a>
 
         </form>

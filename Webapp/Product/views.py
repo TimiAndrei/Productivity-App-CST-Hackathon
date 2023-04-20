@@ -3,6 +3,7 @@ sys.path.append('./Product')
 from tasks import task
 from user import user
 from user_list import userList
+from retrieve_data import addUser
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import addUserForm, addTaskForm, loginForm
@@ -10,59 +11,65 @@ import cx_Oracle
 import pandas as pd
 from user_list import l
 from django.contrib.auth.decorators import login_required
-
-# from user import user
+from django.contrib import messages
 
 def index(request):
     return render(request,'index.html')
 
+def home(request,username):
+    return render(request,'home.html',{'username':username})
+
 def register(request):
     if request.method == 'GET':
         return render(request, 'register.html')
-    form=addUserForm()
+    # form=addUserForm()
     if request.method == 'POST':
         form=addUserForm(request.POST)
         if form.is_valid():
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            clan_tag = form.cleaned_data['clan_tag']
-            l.addUser(user(first_name,last_name,username,password,clan_tag))
+            first_name = form.cleaned_data.get("first_name")
+            last_name = form.cleaned_data.get("last_name")
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            clan_tag = form.cleaned_data.get("clan_tag")
+            messages.success(request, f'Account created for {username}!')
+            addUser(first_name,last_name,username,password,clan_tag)
             #return redirect('my-login')
-            return HttpResponse("User added")
-    return redirect('my-login')
+        else:
+            messages.error(request, 'Fill out the form !')
+            return redirect('register')
+        return redirect('my-login')
 
 def my_login(request):
     if request.method == 'GET':
         return render(request, 'my-login.html')
-    form=loginForm(request.POST)
-    username = form['username']
-    print(username)
-    if request.method == 'POST' and form.is_valid():
-        # form=loginForm(request.POST)
-        # if form.is_valid():
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        # print(username)
-        for person in l.users:
-            if username == person.username and password == person.password:
-                return redirect('dashboard', username=person.username)
-                # return redirect('dashboard', username = request.POST.get('username'))     
-    return render(request,'my-login.html')
+    if request.method == 'POST':
+        form=loginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            for person in l.users:
+                if username == person.username and password == person.password:
+                    messages.success(request, f'Welcome {username}!')
+                    return redirect('home', username = request.POST.get('username'))
+            messages.error(request, 'Username or password is incorrect !')
+            return redirect('my-login')
+        else :
+            messages.error(request, 'Fill out the form !')
+            return redirect('my-login')
 
-# @login_required
-def dashboard(request,username):
-    # if(request.method == 'GET'):
-    #     return render(request,'dashboard.html')
-    person=l.getUserFromUsername(username)
-    clan=l.getClan(person.clan_tag)
-    top=l.getUserBracket(username)
-    badges=person.badges
-    impr_badges=badges["Improvements"]
-    new_tech_badges=badges["New Technology"]
-    tasks = person.task_list
-    return render(request,'dashboard.html',{'person':person, 'clans':clan, 'top':top, 'improve':impr_badges, 'newtech':new_tech_badges, 'tasks':tasks})
+
+def dashboard(request,username=None):
+    if username is None:
+        return redirect('my-login')
+    else:
+        person=l.getUserFromUsername(username)
+        clan=l.getClan(person.clan_tag)
+        top=l.getUserBracket(username)
+        badges=person.badges
+        impr_badges=badges["Improvements"]
+        new_tech_badges=badges["New Technology"]
+        tasks = person.task_list
+        return render(request,'dashboard.html',{'person':person, 'clans':clan, 'top':top, 'improve':impr_badges, 'newtech':new_tech_badges, 'tasks':tasks, 'username':username})
 
 
 def adduser(request):
@@ -80,9 +87,11 @@ def adduser(request):
     
     return redirect('listusers')
 
-def addtask(request):
+def addtask(request, username=None):
+    if username is None:
+        return redirect('my-login')
     if request.method == 'GET':
-        return render(request, 'addtask.html', {'task':{}})
+        return render(request, 'addtask.html', {'task':{}, 'username':username})
     if(request.method == 'POST'):
         form = addTaskForm(request.POST)
         if form.is_valid():
@@ -98,8 +107,10 @@ def addtask(request):
             for person in userList.users:
                 if person.username == username:
                     person.addTask(new_task)
-            # addTasks(title, description, difficulty, deadline, duration, task_type, username)
-    
-    return redirect('listtasks')
+            return redirect('dashboard', username = username)
+        else:
+            messages.error(request, 'The form is not valid, fill the form correctly !')
+            return redirect('addtask', username = username)
+            #addTasks(title, description, difficulty, deadline, duration, task_type, username)
 
 

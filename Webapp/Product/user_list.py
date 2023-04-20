@@ -99,6 +99,7 @@ l.addUser("Ana", "Uban", "parola123", "CNMV", "User6")
 l.addUser("Mihai", "Bratu", "parola123", "CNMV", "User7")
 l.addUser("Ioana", "Musat", "parola123", "CNMV", "User8")
 
+
 # l.addUser("Mircea", "Ionescu", "parola123", "CNMV2", "U8")
 # l.addUser("Mircea", "Ionescu", "parola123", "CNMV3", "U9")
 # l.addUser("Mircea", "Ionescu", "parola123", "CNMV4", "U10")

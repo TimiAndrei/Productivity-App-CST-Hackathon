@@ -38,9 +38,9 @@
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
+            <a class="btn btn-primary" type="button" href="{% url 'addtask' username=username %}">Add a task</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" href="{% url 'my-login' %}">Login</a>
+            <a href="/" class="btn btn-primary">Log out</a>
             &nbsp; &nbsp; &nbsp;
         </ul>
     </div>
@@ -126,7 +126,7 @@
 
                     <th scope="col">Task Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Username</th>
+                    <th scope="col">Difficulty</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Duration</th>
                     <th scope="col">Task Type</th>

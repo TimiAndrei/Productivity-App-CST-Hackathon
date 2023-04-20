@@ -10,11 +10,13 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 
-    <title> TaskTamer </title>
+    <title> Productivity-App-CST-Hackathon </title>
 
     <link rel="icon" type="image/x-icon" href="/static/images/favicon.png">
 
 </head>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center"
     style="padding:0; margin-bottom:10px;">
 
@@ -35,14 +37,12 @@
 
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
+            <h2 style="color:rgb(42, 37, 37)">Be productive, {{username}} !</h2>
             &nbsp; &nbsp; &nbsp;
-            <!-- <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
-            &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" href="{% url 'my-login' %}">Login</a> -->
+            <a href="/" class="btn btn-primary">Log out</a>
             &nbsp; &nbsp; &nbsp;
         </ul>
     </div>
-
 </nav>
 <div class="container">
     {% if messages %}
@@ -51,25 +51,37 @@
     {% endfor %}
     {% endif %}
 </div>
-<h2 class="text-center" style="padding:10px">Login page</h2>
-<div class="text-center card border-secondary mb-3"
-    style="width: 40%; height:auto; min-width:280px; margin: auto; position: absolute; left: 0; right: 0; padding:1em">
-    <form method="POST" autocomplete="off">
-        {% csrf_token %}
 
-        <div class="form-group">
-            <label class="form-label mt-4">Username</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
-        </div>
-        <div class="form-group">
-            <label class="form-label mt-4">Password</label>
-            <input type="text" class="form-control" name="password" id="password" placeholder="Password">
-        </div>
-        <br>
-        <button type="btnAdd" class="btn btn-primary">Submit</button>
-        <a href="/" class="btn btn-primary">Cancel</a>
-    </form>
-</div>
+<body>
 
+    <div class=" text-center card border-secondary mb-3"
+        style=" height:auto; width:25%; margin: auto; position: absolute; right:0; left:0; padding:1em">
+
+        <h3> A new day, a new task ...</h3>
+        <br><br>
+        <a class="btn btn-primary" type="button" href="{% url 'addtask' username=username %}">Add a task</a>
+        <br><br>
+        <a class="btn btn-primary" type="button" href="{% url 'dashboard' username=username%}">Dashboard</a>
+    </div>
+    </table>
+
+
+</body>
+
+
+
+<br>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+
+    </script>
 
 </html>

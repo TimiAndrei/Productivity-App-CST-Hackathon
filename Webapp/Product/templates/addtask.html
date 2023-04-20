@@ -32,22 +32,21 @@
     </button>
 
     <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-
-
         <ul class="navbar-nav ms-auto">
-
-
-            &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
-            &nbsp; &nbsp; &nbsp;
-            <a class="btn btn-primary" type="button" href="{% url 'my-login' %}">Login</a>
+            <h2 style="color:rgb(42, 37, 37)">I know you can tame this task, {{username}} !</h2>
             &nbsp; &nbsp; &nbsp;
         </ul>
     </div>
 </nav>
 
 <br>
-
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">{{message}}</div>
+    {% endfor %}
+    {% endif %}
+</div>
 
 <body>
 
@@ -93,7 +92,7 @@
 
             <br>
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/" class="btn btn-primary">Cancel</a>
+            <a href="/home/{{username}}" class="btn btn-primary">Cancel</a>
 
         </form>
     </div>
