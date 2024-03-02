@@ -2,9 +2,10 @@ from tasks import task
 from datetime import date, timedelta
 # from retrieve_data import *
 
+
 class user:
-    #counters for failed/ successfully finished tasks. A task is considered failed when it's not done in time
-    #if someone fails a task a new deadline is automatically assigned adding 25% of the initial time
+    # counters for failed/ successfully finished tasks. A task is considered failed when it's not done in time
+    # if someone fails a task a new deadline is automatically assigned adding 25% of the initial time
 
     fail_counter = 0
     success_counter = 0
@@ -12,36 +13,35 @@ class user:
     # the number of tasks the user has had
     # this will be used for the index of the tasks
 
-    # task vector to store all of the tasks associated with the user    
+    # task vector to store all of the tasks associated with the user
     task_list = []
 
     # a variable to store the user's points gained over time
     points = 0
 
-    # user's first name 
+    # user's first name
     first_name = None
-    
+
     # user's last name
     last_name = None
 
     # username -- must be unique, can be chosen by the user
-    username = None    
-    
+    username = None
+
     # password -- user's password for login
     password = None
 
     # users can be part of a clan to see clan member's private stats and compete
-    # with close friends 
+    # with close friends
     clan_tag = None
 
-    
     improvement_counter = 0
     # this is a counter of the number of "Improvement" tasks that have been completed
     # we will use this for giving out badges
     new_tech_counter = 0
     # this is a counter of the number of "New Technology" tasks that have been completed
     # we will use this for giving out badges
-    last_finish_date = date.today() - timedelta(days = 2)
+    last_finish_date = date.today() - timedelta(days=2)
     # this marks the day of the last task finished
     # this will be used for assigning streaks
     # by default, this is set to two days before the creation of the account, so as not to interfere with the rules
@@ -52,12 +52,12 @@ class user:
     # this will be used to mark the largest streak the user has acheived
 
     badges = {
-        "Improvements" : 0,
-        "New Technology" : 0
+        "Improvements": 0,
+        "New Technology": 0
     }
-
+    
     # basic constructor
-    def __init__(self, first_name, last_name, password, clan_tag, username):
+    def __init__(self, first_name, last_name, username, password, clan_tag):
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
@@ -71,17 +71,18 @@ class user:
 
     # for debugging, prints everyting
     def printvars(self):
-        print(self.first_name, self.last_name, self.password, self.clan_tag, self.username)
-    
+        print(self.first_name, self.last_name,
+              self.password, self.clan_tag, self.username)
+
     # gets a task object and gets the points from its finishTask method
     def finishTask(self, val: task):
         plus, task_type = task.finishTask(val)
-        #gets the points that should be added to the total tally and gets the type of the finished task
+        # gets the points that should be added to the total tally and gets the type of the finished task
 
         # print(task_type)
 
         self.points += plus
-        #adds the points earned for the completion
+        # adds the points earned for the completion
 
         if task_type == "Improvement":
             self.improvement_counter += 1
@@ -115,13 +116,11 @@ class user:
 
         # print(self.current_streak)
 
-
         # print(self.new_tech_counter)
 
-
-    
-    # the more recent tasks are inserted at the beginning 
+    # the more recent tasks are inserted at the beginning
     # task vector
+
     def addTask(self, task):
         self.task_list.insert(0, task)
         date_string = task.deadline.strftime("%m/%d/%Y")
@@ -130,7 +129,7 @@ class user:
 
         # addTasks(str(self.task_id), task.title, task.description, task.difficulty, "to_date({date}, 'DD-MM-YYYY')".format(date = date_string), "to_date({days}, 'DD')".format(days=duration.days), task.task_type, self.username)
 
-    # when finishing a task we add 1 to the success counter and also remove the task 
+    # when finishing a task we add 1 to the success counter and also remove the task
     # from the user's task_list
     def removeTask(self, task):
         # don't forget to add points when finnishing a task
@@ -140,7 +139,7 @@ class user:
         self.success_counter += 1
 
 
-#for testing purposes below 
+# for testing purposes below
 
 # u1 = user("Mircea", "Ionescu", "parola123", "CNMV", "mircea")
 # u1.printvars()
